@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Assignment 5.4</title>
+
+    <!-- Style for DIV and P element -->
+	<style type="text/css">
+		#DIV,#print,#printh{
+			display: none;
+		}
+	</style>
+
+</head>
+<body>
+<!-- Two button for Print and Salary Change -->
+<button onclick="PrintDetail()">PrintDetails</button>            <!-- Print of Emp Detail     -->
+<button onclick="ChangeSalary()">ChangeSalary</button><br>        <!-- Change Salary function  -->
+<p id="printh">EmployeeName--Skill--Salary</p> 
+<p id="print"></p>                                                <!-- Print displayin portion --> 
+<br>
+<br>
+<div id="DIV">                                                    <!-- DIV for Salary change   -->
+Old Salary:<input type="number" name="oldSalary" id="OSalary" disabled> 
+New Salary:<input type="number" name="newSalary" id="NSalary">
+<input type="submit" value="Submit" name="submit" id="submit" onclick="submit()">
+</div>
+
+<script type="text/javascript">
+<!-- Proto
+function employee(empname,skill,basicsalary) {
+    this.empname = empname;
+    this.skill = skill;
+    this.basicsalary = basicsalary;
+    this.changebasicsalary = function (chgsalary) {
+        this.basicsalary = chgsalary;
+    };
+    this.printdetails = function (){ 
+    return this.empname
+    +"<br>"+this.skill+"<br>"+this.basicsalary;
+    };
+}
+
+
+var sample = new employee("Rakesh NS","AS400","10000");
+
+
+
+function ChangeSalary(){
+    
+    document.getElementById("DIV").style.display = 'block';
+    document.getElementById("printh").style.display = 'none';
+    document.getElementById("print").style.display = 'none';
+    document.getElementById("OSalary").value = sample.basicsalary;
+
+}
+
+      function submit() 
+      {
+           var m = document.getElementById("NSalary").value;   //Radius parameter passed
+           
+           var inputsalary = parseInt(m); 
+           var flag        = "n";
+
+           if(isNaN(inputsalary)){
+            alert("New Salary should be a valid number.")
+           }
+             else{
+                  sample.changebasicsalary(inputsalary);          //Alert message with outva put
+                  alert("New salary of employee "+ sample.empname + " is " + sample.basicsalary +"Rs .")
+                  flag = "y";
+                 }
+           if(flag = "y"){
+            document.getElementById("DIV").style.display = 'none';
+            document.getElementById("printh").style.display = 'block'; 
+            document.getElementById("print").style.display = 'block'; 
+
+            PrintDetail();  
+           }
+
+      }
+function PrintDetail(){
+    document.getElementById("DIV").style.display = 'none';
+    document.getElementById("printh").style.display = 'block';
+    document.getElementById("print").style.display = 'block';
+    document.getElementById("print").innerHTML = sample.printdetails();
+/*
+"**************************************************" +"<br>"+
+"Employe Name.:" +sample.empname                     +"<br>"+
+"Skill..................:" +sample.skill             +"<br>"+
+"Basic Salary......:" +sample.basicsalary            +"<br>"+  
+"**************************************************"	
+}*/
+}
+
+</script>
+
+</body>
+</html>
